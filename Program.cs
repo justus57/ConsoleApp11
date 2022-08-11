@@ -25,31 +25,7 @@ namespace ConsoleApp11
                     {
                         string line = lines[i];
                         // Use a tab to indent each line of the file.
-                        if (line.Contains("https:"))
-                        {
-                            Link = line;
-
-                        }
-                        else if (line.Contains("TSIN:"))
-                        {
-                            TSIN = line.Substring(line.IndexOf(':') + 1).TrimEnd();
-
-                        }
-                        else if (line.Contains("DATE:"))
-                        {
-                            Date = line.Substring(line.IndexOf(':') + 1).TrimEnd();
-
-                        }
-                        else if (line.Contains("CUSN:"))
-                        {
-                            CUSN = line.Substring(line.IndexOf(':') + 1).TrimEnd();
-
-                        }
-                        else if (line.Contains("CUIN:"))
-                        {
-                            CUIN = line.Substring(line.IndexOf(':') + 1).TrimEnd();
-                        }
-
+                        NewMethod(line);
 
                     }
                     File.Copy(Path.Combine(doc), Path.Combine(@"D:\current\New folder", file));
@@ -59,6 +35,34 @@ namespace ConsoleApp11
             catch (Exception)
             {
 
+            }
+        }
+
+        private static void NewMethod(string line)
+        {
+            if (line.Contains("https:"))
+            {
+                Link = line;
+
+            }
+            else if (line.Contains("TSIN:"))
+            {
+                TSIN = line.Substring(line.IndexOf(':') + 1).TrimEnd();
+
+            }
+            else if (line.Contains("DATE:"))
+            {
+                Date = line.Substring(line.IndexOf(':') + 1).TrimEnd();
+
+            }
+            else if (line.Contains("CUSN:"))
+            {
+                CUSN = line.Substring(line.IndexOf(':') + 1).TrimEnd();
+
+            }
+            else if (line.Contains("CUIN:"))
+            {
+                CUIN = line.Substring(line.IndexOf(':') + 1).TrimEnd();
             }
         }
     }
